@@ -1,7 +1,7 @@
 package cache
 
 import (
-	"gommunity/server/util"
+	"gommunity/server/utils"
 	"log"
 	"net/http"
 	"strings"
@@ -46,7 +46,7 @@ func (r *Resource) WriteWith(w http.ResponseWriter) {
 		log.Println("주어진 캐싱 대상의 리소스 파일 경로가 정의되지 않았습니다")
 		return
 	}
-	content, contentType := util.ContentAndType(r.Path)
+	content, contentType := utils.ContentAndType(r.Path)
 
 	if content == nil {
 		w.WriteHeader(http.StatusNotFound)

@@ -1,8 +1,8 @@
-package api
+package handlers
 
 import (
 	"gommunity/server/cache"
-	"gommunity/server/util"
+	"gommunity/server/utils"
 	"net/http"
 	"path/filepath"
 )
@@ -15,20 +15,23 @@ func (HTTPHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		handleGetRequest(w, r)
 	}
+	if r.Method == http.MethodPost {
+		handlePostRequest(w, r)
+	}
 }
 
 func handleGetRequest(w http.ResponseWriter, r *http.Request) {
 	res := cache.Resource{}
 	ext := filepath.Ext(r.URL.Path)
 
-	if ext == "" && r.URL.Path == "" {
-		res.Path = util.JoinPath("../templates", "index.html")
+	if ext == "" && r.URL.Path == "/" {
+		res.Path = utils.JoinPath("../client/templates", "index.html")
 
-	} else if ext == "" && r.URL.Path != "" {
+	} else if ext == "" && r.URL.Path != "/" {
 		url := r.URL.Path + ".html"
-		res.Path = util.JoinPath("../templates", url)
+		res.Path = utils.JoinPath("../client/templates", url)
 	} else {
-		res.Path = util.JoinPath("../templates", r.URL.Path)
+		res.Path = utils.JoinPath("../client/templates", r.URL.Path)
 
 	}
 
@@ -37,7 +40,7 @@ func handleGetRequest(w http.ResponseWriter, r *http.Request) {
 
 	// 캐시된 데이터가 없으면 파일 읽어와서 캐싱
 	if data == nil {
-		content, contentType := util.ContentAndType(res.Path)
+		content, contentType := utils.ContentAndType(res.Path)
 		if content == nil {
 			http.NotFound(w, r)
 			return
@@ -55,4 +58,10 @@ func handleGetRequest(w http.ResponseWriter, r *http.Request) {
 
 	// 캐시된 데이터 전송
 	data.WriteWith(w)
+}
+
+func handlePostRequest(w http.ResponseWriter, r *http.Request) {
+	// headers := r.Header
+	// authorization := headers.Get("Authorization")
+
 }
