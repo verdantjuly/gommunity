@@ -67,7 +67,7 @@
 
 # Wireframe
 
-https://www.figma.com/file/Ypk12AKtXHeJqkC4PHklvn/Untitled?type=design&node-id=0%3A1&mode=design&t=wFf0jDXzPFOQ2qVM-1
+[figma]https://www.figma.com/file/Ypk12AKtXHeJqkC4PHklvn/Untitled?type=design&node-id=0%3A1&mode=design&t=wFf0jDXzPFOQ2qVM-1
 
 ![스크린샷 2024-01-16 오전 10.32.19.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/41e7b361-b2f9-488e-a1c9-a6387c941d75/6740a8a5-cd8f-4fa5-b1d5-4b94d86ae0ea/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-01-16_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.32.19.png)
 
