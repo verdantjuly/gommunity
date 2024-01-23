@@ -21,10 +21,15 @@ func handleGetRequest(w http.ResponseWriter, r *http.Request) {
 	res := cache.Resource{}
 	ext := filepath.Ext(r.URL.Path)
 
-	if ext == "" {
+	if ext == "" && r.URL.Path == "" {
 		res.Path = util.JoinPath("../templates", "index.html")
+
+	} else if ext == "" && r.URL.Path != "" {
+		url := r.URL.Path + ".html"
+		res.Path = util.JoinPath("../templates", url)
 	} else {
 		res.Path = util.JoinPath("../templates", r.URL.Path)
+
 	}
 
 	// 캐시된 데이터 로드
