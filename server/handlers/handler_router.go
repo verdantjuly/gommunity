@@ -59,9 +59,14 @@ func handleGetRequest(w http.ResponseWriter, r *http.Request) {
 	// 캐시된 데이터 전송
 	data.WriteWith(w)
 }
-
 func handlePostRequest(w http.ResponseWriter, r *http.Request) {
-	// headers := r.Header
-	// authorization := headers.Get("Authorization")
 
+	var data cache.ResourceData
+
+	switch r.URL.Path {
+	case "/signup":
+		data = SignUpPostRequest(w, r)
+
+	}
+	data.WriteWith(w)
 }
